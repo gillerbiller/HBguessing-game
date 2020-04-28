@@ -1,30 +1,40 @@
 """A number-guessing game."""
 import random
 
-playerName = input("Hello! Please enter your name ")
+greeting = input("Hello! Please enter your name ")
 
-print (f"Hi {playerName}, I'm thinking of number between 1 and 100.")
+print (f"Hi {greeting}, I'm thinking of number between 1 and 100.")
 
-def gamePlay():
-    number = (random.choice(range(100)))
+
+def gameplay():
+
+    numberOfGuesses = 0
+
+    number = (random.choice(range(1, 100)))
     print(number)
 
-    guessedNumber = int(input("Pick a number. "))
+    while number:
 
-    counter = 0
+        guessedNumber = int(input("Pick a number. "))
 
-    for x in number:
-        counter += 1
-        if number < guessedNumber:
-            print(input("That number is too high. Guess again. "))
-        elif number > guessedNumber:
-            print(input("That number is too low. Guess again "))
+        if guessedNumber < number:
+            numberOfGuesses += 1
+            print(f"To low, {guessedNumber}")
+
+        elif guessedNumber > number:
+            numberOfGuesses += 1
+            print(f"to high, {guessedNumber}")
+
         else:
-            number = guessedNumber
-            print(f"That is the number I was thinking of! You guessed \
-            it in only {counter} trys.")
+            guessedNumber == number
+            print(f"That is my number, you guess {numberOfGuesses} time(s)")
+            break
+gameplay()
+
+
+  
         
-gamePlay()
+
 
 
 
